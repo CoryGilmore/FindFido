@@ -1,0 +1,16 @@
+#/bin/bash
+
+ip=192.168.0.8
+
+while :
+do
+        #invoke ping message and send stdout to ./a.out (findFido.c)
+	result=`ping -c 1 "$ip" | ./a.out`
+        #if findFido.c returns FAIL
+        if [ "$result" == "FAIL" ]; then
+          python3 sendAlert.py
+          break
+        else
+          echo "DOG IN RANGE"
+        fi
+done 
