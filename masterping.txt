@@ -1,7 +1,9 @@
 #/bin/bash
 
-ip=192.168.0.8
+#ENTER CLIENT IPADDRESS HERE
+ip=XXX.XXX.X.XX
 
+gcc findFido.c getword.c getword.h
 while :
 do
         #invoke ping message and send stdout to ./a.out (findFido.c)
@@ -9,8 +11,10 @@ do
         #if findFido.c returns FAIL
         if [ "$result" == "FAIL" ]; then
           python3 sendAlert.py
+          echo "DOG OUT OF RANGE, MESSAGE SENT"
           break
         else
           echo "DOG IN RANGE"
+          sleep 2
         fi
 done 
